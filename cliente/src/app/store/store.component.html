@@ -1,0 +1,27 @@
+<div class="Contenido" style="padding: 1rem;">
+  <!-- Verificamos si hay vendedores -->
+  <div *ngIf="vendedores.length > 0" class="container">
+    <h2 class="text-center mb-4">Vendedores</h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <!-- Iteramos sobre los vendedores -->
+      <div *ngFor="let vendedor of vendedores" class="col">
+        <div class="card shadow-sm">
+          <img [src]="'http://localhost:3000' + vendedor.foto_perfil" alt="{{ vendedor.nombre }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ vendedor.nombre }}</h5>
+            <p class="card-text">{{ vendedor.direccion }}</p>
+            <p class="card-text"><small class="text-muted">{{ vendedor.telefono }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay vendedores -->
+  <div *ngIf="vendedores.length === 0" class="text-center">
+    <h2>No hay vendedores disponibles en este momento.</h2>
+  </div>
+
+  <!-- Menú flotante -->
+  <app-floating-menu></app-floating-menu>
+</div>

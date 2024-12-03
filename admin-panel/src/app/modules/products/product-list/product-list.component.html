@@ -1,0 +1,48 @@
+<div class="product-list container mt-4">
+  <h2 class="mb-4">Lista de Productos</h2>
+  <button class="btn btn-primary mb-3" routerLink="/productos/add">Añadir Producto</button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio Normal</th>
+        <th scope="col">Precio Bajo</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Categoría</th>
+        <th scope="col">Delivery</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>
+          <img *ngIf="product.imagenes && product.imagenes.length"
+               [src]="'http://localhost:3000' + product.imagenes[0].url_imagen"
+               alt="Imagen del Producto" 
+               width="50" height="50">
+        
+          <img *ngIf="product.imagenes && !product.imagenes.length"
+               [src]="'http://localhost:3000' + product.imagenes.url_imagen"
+               alt="Imagen del Producto" 
+               width="50" height="50">
+        </td>
+        <td>{{ product.nombre_producto }}</td>
+        <td>${{ product.precio_normal }}</td>
+        <td>${{ product.precio_bajo || 'N/A' }}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.categoria?.nombre }}</td> <!-- Mostrar el nombre de la categoría -->
+        <td>{{ product.delivery ? 'Sí' : 'No' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-info mr-2" [routerLink]="['/productos/edit', product.id_producto]">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteProduct(product.id_producto)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

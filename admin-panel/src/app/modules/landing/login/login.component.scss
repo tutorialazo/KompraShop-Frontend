@@ -1,0 +1,84 @@
+.login-welcome{
+    display: flex;
+    flex-direction: row;
+}
+
+.login-welcome h2{
+    font-size: 17px;
+    font-weight: 300;
+    width: 80%;
+}
+.login-welcome h2 span{
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.login-welcome p{
+    font-size: 11px;
+    text-align: end;
+    margin-top: 1rem;
+}
+.login-welcome p a{
+    text-decoration: none;
+    color: #FE0080;
+}
+
+.login-welcome{
+    margin-bottom: 2.2rem;
+}
+
+// Ingresar los datos
+.login-data{
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+}
+.login-data:nth-child(3){
+    margin-top: 1rem;
+}
+.login-data label{
+    font-size: 15px;
+    font-weight: 500;
+}
+.login-data input {
+    height: 45px;
+    color: #808080;
+    border-radius: 6px;
+    margin-top: 8px;
+    border: 1px solid #b0b0b0;
+    padding-left: 10px;
+    padding-left: 14px; 
+}
+
+::placeholder {
+    color: #b0b0b0;
+}
+
+// Botón
+
+.login-boton {
+    display: flex;
+    flex-direction: column; /* Para apilar los elementos verticalmente */
+    align-items: flex-end; /* Alinea todos los elementos a la derecha */
+}
+.login-boton a{
+    margin-top: 7px;
+}
+
+button{
+    color: white;
+    background-color: #FE0080;
+    border: none;
+    width: 230px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 6px;
+    margin-top: 2rem;
+}
+
+button:hover{
+    color: #FE0080;
+    background-color: white;
+    border: solid 2px #FE0080;
+    cursor: pointer;
+}

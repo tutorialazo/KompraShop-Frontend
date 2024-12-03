@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <div class="login-welcome">
+    <h2>Completa tu <strong>Registro</strong></h2>
+    <p>Añade más información para empezar a usar la plataforma.</p>
+  </div>
+
+  <div class="login-dato">
+    <label for="direccion">Dirección</label>
+    <input type="text" id="direccion" [(ngModel)]="direccion" name="direccion" required />
+  </div>
+
+  <div class="login-dato">
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" [(ngModel)]="telefono" name="telefono" required />
+  </div>
+
+  <div class="login-dato">
+    <label for="fotoPerfil">Foto de Perfil</label>
+    <input type="file" id="fotoPerfil" (change)="onFileSelected($event)" class="custom-file-input"/>
+    <label for="fotoPerfil" class="custom-file-labe">Cargar imagen</label>
+  </div>
+
+  <div class="login-boton">
+    <button type="submit">Completar Registro</button>
+  </div>
+</form>

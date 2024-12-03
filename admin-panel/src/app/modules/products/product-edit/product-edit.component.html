@@ -1,0 +1,84 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Editar Producto</h2>
+    <button class="btn btn-secondary" routerLink="/productos">Cancelar</button>
+  </div>
+
+  <form (ngSubmit)="updateProduct()">
+    <!-- Detalles del producto -->
+    <div class="form-group">
+      <label for="nombre_producto">Nombre:</label>
+      <input
+        type="text"
+        id="nombre_producto"
+        class="form-control"
+        [(ngModel)]="product.nombre_producto"
+        name="nombre_producto"
+        required
+        placeholder="Ingrese el nombre del producto"
+      />
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        class="form-control"
+        [(ngModel)]="product.descripcion"
+        name="descripcion"
+        rows="3"
+        placeholder="Ingrese la descripción del producto"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="precio_normal">Precio:</label>
+      <input
+        type="number"
+        id="precio_normal"
+        class="form-control"
+        [(ngModel)]="product.precio_normal"
+        name="precio_normal"
+        required
+        placeholder="Ingrese el precio normal"
+      />
+    </div>
+    <div class="form-group">
+      <label for="stock">Stock:</label>
+      <input
+        type="number"
+        id="stock"
+        class="form-control"
+        [(ngModel)]="product.stock"
+        name="stock"
+        required
+        placeholder="Ingrese el stock disponible"
+      />
+    </div>
+    <div class="form-group">
+      <label for="categoria">Categoría:</label>
+      <select
+        id="categoria"
+        class="form-control"
+        [(ngModel)]="product.id_categoria"
+        name="id_categoria"
+        required
+      >
+        <option value="" disabled selected>Seleccione una categoría</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id_categoria">
+          {{ categoria.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="delivery"
+        [(ngModel)]="product.delivery"
+        name="delivery"
+      />
+      <label class="form-check-label" for="delivery">Delivery disponible</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="container profile-container my-5">
+  <div class="profile-header text-center">
+    <img *ngIf="vendedor.foto_perfil" [src]="'http://localhost:3000' + vendedor.foto_perfil" alt="Foto de perfil" class="rounded-circle profile-image mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+    <h2 class="mb-1">{{ vendedor.nombre_negocio }}</h2>
+    <p class="text-muted">{{ vendedor.correo_vendedor }}</p>
+  </div>
+
+  <!-- Botones para seleccionar la sección -->
+  <div class="d-flex justify-content-center mt-4 mb-3">
+    <button class="btn btn-outline-primary mx-2" (click)="setSection('basic')" [class.active]="selectedSection === 'basic'">Actualizar Información Básica</button>
+    <button class="btn btn-outline-primary mx-2" (click)="setSection('email')" [class.active]="selectedSection === 'email'">Actualizar Correo</button>
+    <button class="btn btn-outline-primary mx-2" (click)="setSection('password')" [class.active]="selectedSection === 'password'">Actualizar Contraseña</button>
+    <button class="btn btn-outline-primary mx-2" (click)="setSection('photo')" [class.active]="selectedSection === 'photo'">Actualizar Foto de Perfil</button>
+  </div>
+
+  <!-- Sección de actualización de información básica -->
+  <div *ngIf="selectedSection === 'basic'" class="update-section mt-4">
+    <h4>Actualizar Información Básica</h4>
+    <div class="form-group">
+      <label for="nombreNegocio">Nombre del Negocio</label>
+      <input id="nombreNegocio" type="text" class="form-control" [(ngModel)]="basicInfo.nombre_negocio" placeholder="Nombre del Negocio">
+    </div>
+    <!--
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input id="direccion" type="text" class="form-control" [(ngModel)]="basicInfo.direccion" placeholder="Dirección">
+    </div>
+    -->
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="text" class="form-control" [(ngModel)]="basicInfo.telefono" placeholder="Teléfono">
+    </div>
+    <button class="btn btn-primary mt-3" (click)="updateBasicInfo()">Guardar Cambios</button>
+  </div>
+
+  <!-- Sección de actualización de correo -->
+  <div *ngIf="selectedSection === 'email'" class="update-section mt-4">
+    <h4>Actualizar Correo Electrónico</h4>
+    <div class="form-group">
+      <label for="correoVendedor">Nuevo Correo</label>
+      <input id="correoVendedor" type="email" class="form-control" [(ngModel)]="emailInfo.correo_vendedor" placeholder="Nuevo Correo">
+    </div>
+    <button class="btn btn-primary mt-3" (click)="updateEmail()">Guardar Cambios</button>
+  </div>
+
+  <!-- Sección de actualización de contraseña -->
+  <div *ngIf="selectedSection === 'password'" class="update-section mt-4">
+    <h4>Actualizar Contraseña</h4>
+    <div class="form-group">
+      <label for="contrasenaActual">Contraseña Actual</label>
+      <input id="contrasenaActual" type="password" class="form-control" [(ngModel)]="passwordInfo.contrasena_actual" placeholder="Contraseña Actual">
+    </div>
+    <div class="form-group">
+      <label for="nuevaContrasena">Nueva Contraseña</label>
+      <input id="nuevaContrasena" type="password" class="form-control" [(ngModel)]="passwordInfo.nueva_contrasena" placeholder="Nueva Contraseña">
+    </div>
+    <button class="btn btn-primary mt-3" (click)="updatePassword()">Guardar Cambios</button>
+  </div>
+
+  <!-- Sección de actualización de foto de perfil -->
+  <div *ngIf="selectedSection === 'photo'" class="update-section mt-4">
+    <h4>Actualizar Foto de Perfil</h4>
+    <div class="form-group">
+      <label for="fotoPerfil">Seleccionar nueva foto</label>
+      <input id="fotoPerfil" type="file" class="form-control-file" (change)="onFileSelected($event)">
+    </div>
+    <button class="btn btn-primary mt-3" (click)="updateProfilePicture()">Guardar Cambios</button>
+  </div>
+</div>

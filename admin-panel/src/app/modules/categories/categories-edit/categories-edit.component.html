@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-4">Editar Categoría</h2>
+      <button class="btn btn-secondary" routerLink="/categorias">Cancelar</button>
+    </div>
+
+    <form (submit)="updateCategory()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" class="form-control" [(ngModel)]="descripcion" name="descripcion"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen Actual</label>
+        <div *ngIf="imagenActual">
+          <img [src]="'http://localhost:3000' + imagenActual" alt="Imagen Actual" width="100">
+        </div>
+        <label for="imagenNueva">Cambiar Imagen</label>
+        <input type="file" id="imagenNueva" class="form-control" (change)="onFileSelected($event)">
+      </div>
+      <button type="submit" class="btn btn-primary">Actualizar Categoría</button>
+    </form>
+</div>
+  

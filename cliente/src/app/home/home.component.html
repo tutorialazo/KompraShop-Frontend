@@ -1,0 +1,41 @@
+<div *ngIf="showModal">
+  <!-- Mostramos el componente Location dentro del modal -->
+  <app-location (locationSelected)="onLocationSelected($event)"></app-location>
+</div>
+
+<div class="Contenido">
+  <!-- Mostrar el nombre de la ubicación en la parte superior izquierda, clickeable -->
+  <div *ngIf="!showModal && userLocation" class="my-3">
+    <h2>Ubicación</h2>
+    <h3 (click)="showLocationModal()" style="cursor: pointer;">
+      <i class="fa fa-map-marker-alt me-2"></i>  <!-- Icono de ubicación -->
+      {{ userLocation }}
+    </h3>
+  </div>
+
+
+  <!-- Mostrar los nombres de los productos -->
+  <div *ngIf="productos.length > 0" class="container">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+      <!-- Card por producto -->
+      <div *ngFor="let producto of productos" class="col">
+        <div class="card shadow-sm">
+          <img [src]="'http://localhost:3000' + producto.imagenes[0]?.url_imagen" alt="{{ producto.nombre_producto }}" class="card-img-top">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div >
+                <h5 class="card-title">{{ producto.nombre_producto }}</h5>
+                <h6 class="card-subtitle text-muted">{{ producto.precio_normal }}</h6>
+              </div>
+              <!-- Botón de añadir al carrito -->
+              <button (click)="addirAlCarrito(producto)" class="btn btn-primary">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Menú flotante-->
+  <app-floating-menu></app-floating-menu>
+</div>

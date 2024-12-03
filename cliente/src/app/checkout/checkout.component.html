@@ -1,0 +1,47 @@
+<div class="Contenido" style="padding: 1rem;">
+  <!-- Mostrar los productos del carrito -->
+  <div *ngIf="carrito.length > 0">
+    <h2 class="text-center my-4">Resumen de compra</h2>
+    <div class="row">
+      <div *ngFor="let producto of carrito" class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card shadow-sm">
+          <div class="row no-gutters">
+            <!-- Imagen del producto a la izquierda -->
+            <div class="col-4">
+              <img [src]="'http://localhost:3000' + producto.imagen" alt="{{ producto.nombre_producto }}" class="card-img-left">
+            </div>
+            <!-- Información del producto a la derecha -->
+            <div class="col-8">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title">{{ producto.nombre_producto }}</h5>
+                <p class="card-text">Precio: S/. {{ producto.precio_normal }} </p>
+                <p class="card-text">Cantidad: {{ producto.cantidad }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mostrar total de la compra -->
+    <div class="row my-4">
+      <div class="col-12 text-right">
+        <h4>Total: S/. {{ totalCompra() }}</h4>
+      </div>
+    </div>
+
+    <!-- Botón de "Pedir por WhatsApp" -->
+    <div class="text-center" style="margin-bottom: 7rem;">
+      <button (click)="enviarWhatsApp()" class="btn btn-success">Pedir por WhatsApp</button>
+    </div>
+
+  </div>
+
+  <!-- Mensaje cuando el carrito está vacío -->
+  <div *ngIf="carrito.length === 0" class="text-center my-5">
+    <h2>No tienes productos en tu carrito</h2>
+  </div>
+
+  <!-- Menú flotante -->
+  <app-floating-menu></app-floating-menu>
+</div>

@@ -1,0 +1,43 @@
+<!-- sidebar.component.html -->
+<input type="checkbox" id="check" checked>
+
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+
+<div class="sidebar">
+  <header>Menu</header>
+  
+  <a href="/dashboard" class="active">
+    <i class="fas fa-qrcode"></i>
+    <span>Dashboard</span>
+  </a>
+
+  <a href="/productos">
+    <i class="fas fa-box"></i> <!--<i class="fas fa-box-open"></i>-->
+    <span>Productos</span>
+  </a>
+
+  <a href="/categorias">
+    <i class="fas fa-th-large"></i>
+    <span>Categorias</span>
+  </a>
+
+  <a href="/perfil">
+    <i class="fas fa-user"></i>
+    <span>Perfil</span>
+  </a>
+
+
+
+  <!-- Botón de Cerrar Sesión -->
+  <div class="logout-section">
+    <button (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+    </button>
+  </div>
+</div>
+
+
+  

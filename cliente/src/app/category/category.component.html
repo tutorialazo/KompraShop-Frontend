@@ -1,0 +1,25 @@
+<div class="Contenido" style="padding: 1rem;">
+  <!-- Verificamos si hay categorías -->
+    <div *ngIf="categorias.length > 0" class="container" style="margin-bottom: 7rem;">
+        <h2 class="text-center mb-4">Categorías</h2>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <!-- Iteramos sobre las categorías -->
+        <div *ngFor="let categoria of categorias" class="col">
+            <div class="card shadow-sm">
+            <img [src]="'http://localhost:3000' + categoria.imagen" alt="{{ categoria.nombre }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ categoria.nombre }}</h5>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+  <!-- Mensaje si no hay categorías -->
+  <div *ngIf="categorias.length === 0" class="text-center" >
+    <h2>No hay categorías disponibles en este momento.</h2>
+  </div>
+
+  <!-- Menú flotante -->
+  <app-floating-menu></app-floating-menu>
+</div>

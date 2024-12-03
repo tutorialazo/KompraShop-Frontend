@@ -1,0 +1,33 @@
+<div class="category-list container mt-4">
+    <h2 class="mb-4">Lista de Categorías</h2>
+    <button class="btn btn-primary mb-3" routerLink="/categorias/add">Añadir Categoría</button>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Imagen</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories">
+          <td>
+            <img *ngIf="category.imagen" [src]="'http://localhost:3000' + category.imagen" alt="Imagen de la Categoría" width="50" height="50">
+          </td>
+          <td>{{ category.nombre }}</td>
+          <td>{{ category.descripcion }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-info mr-2" [routerLink]="['/categorias/edit', category.id_categoria]">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteCategory(category.id_categoria)">
+              <i class="fas fa-trash-alt"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+  

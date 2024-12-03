@@ -1,0 +1,17 @@
+.perfil-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+  
+.perfil-content {
+    display: flex;
+    flex: 1;
+}
+  
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;  
+}
+  

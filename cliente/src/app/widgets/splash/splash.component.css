@@ -1,0 +1,17 @@
+.splash-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+  
+.splash-image {
+    max-width: 80%;  /* Ajusta el tamaño según tus necesidades */
+    max-height: 80%; /* Ajusta el tamaño según tus necesidades */
+    object-fit: contain;  /* Asegura que la imagen mantenga su proporción */
+}
+  

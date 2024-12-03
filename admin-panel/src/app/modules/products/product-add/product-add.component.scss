@@ -1,0 +1,15 @@
+.producto{
+    display: flex;
+    flex-direction: row;
+}
+.producto .datos{
+    width: 65%;
+    margin-right: 5%;
+}
+#descripcion{
+    height: 300px;
+}
+
+.sugerencias{
+    width: 300px;
+}

@@ -1,0 +1,49 @@
+.floating-menu {
+  position: fixed;
+  bottom: 20px; /* Eleva el menú desde el borde inferior */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Ajusta el ancho de la "isla" */
+  max-width: 400px; /* Limita el ancho máximo para pantallas grandes */
+  background-color: #800080; /* Color morado */
+  border-radius: 50px; /* Hace el contenedor redondeado */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Sombra sutil para resaltar */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.menu-item {
+  font-size: 14px;
+  color: #ffffff; /* Cambia el color del texto y los íconos a blanco */
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #ffd700; /* Color de hover dorado */
+}
+
+.menu-item i {
+  font-size: 24px; /* Aumenta el tamaño de los íconos */
+  margin-bottom: 5px;
+}
+
+@media (max-width: 576px) {
+  .floating-menu {
+    width: 90%; /* Ocupa todo el ancho en pantallas pequeñas */
+    bottom: 10px; /* Ajusta la posición del menú */
+    padding: 10px 0;
+  }
+
+  .menu-item i {
+    font-size: 20px; /* Reduce ligeramente el tamaño de los íconos */
+  }
+}

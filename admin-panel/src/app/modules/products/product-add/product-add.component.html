@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Añadir Producto</h2>
+    <button class="btn btn-secondary" routerLink="/productos">Cancelar</button>
+  </div>
+
+    <form (ngSubmit)="addProduct()" enctype="multipart/form-data">
+      
+    <div class="producto">
+      <div class="datos">
+        <!-- Detalles del producto -->
+        <div class="form-group">
+          <label for="nombre_producto">Nombre:</label>
+          <input type="text" id="nombre_producto" class="form-control" [(ngModel)]="product.nombre_producto" name="nombre_producto" required placeholder="Ingrese el nombre del producto" />
+        </div>
+        <!-- Botón para solicitar sugerencia -->
+        <button type="button" class="btn btn-info mb-3" (click)="solicitarSugerencia()">Recomendar</button>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" class="form-control" [(ngModel)]="product.descripcion" name="descripcion" rows="3" placeholder="Ingrese la descripción del producto"></textarea>
+        </div>
+      </div>
+      <!-- Div para mostrar las sugerencias de nombre y descripción -->
+      <div class="sugerencias">
+        <h5>Sugerencias</h5>
+        <p>
+          <strong>Nombre sugerido:</strong> {{ sugerenciaNombre }}
+          <button *ngIf="sugerenciaNombre !== 'Escribe el nombre de tu producto' && sugerenciaNombre !== ''"
+                  class="btn btn-sm btn-secondary ml-2" 
+                  (click)="copiarNombre()">Copiar</button>
+        </p>
+        <p>
+          <strong>Descripción sugerida:</strong> {{ sugerenciaDescripcion }}
+          <button *ngIf="sugerenciaDescripcion !== 'Escribe el nombre de tu producto' && sugerenciaDescripcion !== ''"
+                  class="btn btn-sm btn-secondary ml-2" 
+                  (click)="copiarDescripcion()">Copiar</button>
+        </p>
+      </div>
+    </div>
+
+
+      <!-- Resto del formulario -->
+      <div class="form-group">
+        <label for="precio_normal">Precio:</label>
+        <input type="number" id="precio_normal" class="form-control" [(ngModel)]="product.precio_normal" name="precio_normal" required placeholder="Ingrese el precio normal" />
+      </div>
+      <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" class="form-control" [(ngModel)]="product.stock" name="stock" required placeholder="Ingrese el stock disponible" />
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" class="form-control" [(ngModel)]="product.id_categoria" name="id_categoria" required>
+          <option value="" disabled selected>Seleccione una categoría</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria.id_categoria">
+            {{ categoria.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="delivery" [(ngModel)]="product.delivery" name="delivery" />
+        <label class="form-check-label" for="delivery">Delivery disponible</label>
+      </div>
+
+      <!-- Imágenes del producto -->
+      <div class="form-group">
+        <label for="imagenes">Imágenes del Producto:</label>
+        <input type="file" id="imagenes" class="form-control-file" (change)="onImagesSelected($event)" multiple required />
+        <small class="form-text text-muted">Seleccione una o varias imágenes. Marque una como principal.</small>
+      </div>
+      <div *ngIf="selectedImages.length > 0" class="form-group">
+        <label>Seleccionar Imagen Principal:</label>
+        <div *ngFor="let image of selectedImages; let i = index">
+          <input type="radio" [value]="i" name="principal" [(ngModel)]="principalImageIndex" required /> Imagen {{ i + 1 }}
+        </div>
+      </div>
+
+      <!-- Video del producto -->
+      <div class="form-group">
+        <label for="videos">Videos del Producto (opcional):</label>
+        <input type="file" id="videos" class="form-control-file" (change)="onVideosSelected($event)" multiple accept="video/*" />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
